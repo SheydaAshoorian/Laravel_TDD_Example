@@ -11,10 +11,16 @@ class ArticleTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_(): void
+    public function test_create_article(): void
     {
-        $response = $this->get('/');
+        $data=[
+            'title' => $this->faker->sentence,
+            'content'=> $this->faker->paragraph
+        ];
 
-        $response->assertStatus(200);
+        $this->post(route('articles.store'), $data)
+
+            ->assertStatus(201)
+            ->assertJson(compact('data'));
     }
 }
