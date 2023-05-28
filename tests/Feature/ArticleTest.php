@@ -19,7 +19,7 @@ class ArticleTest extends TestCase
         ];
 
         $this->post(route('articles.store'), $data)
-
+            ->dump()
             ->assertStatus(201)
             ->assertJson(compact('data'));
     }

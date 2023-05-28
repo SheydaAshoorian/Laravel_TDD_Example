@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateArticleRequest;
+use App\Models\Article;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ArticlesApiController extends Controller
@@ -24,14 +26,15 @@ class ArticlesApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param CreateArticleRequest $request
      */
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
+
         /**
          * @param CreateArticleRequest $request
          */
-        return response()->json(['data' => Article::create($request->all())]);
+        return response()->json(['data' => Article::create($request->all())], 201);
     }
 
     /**
