@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateArticleRequest;
 use Illuminate\Http\Request;
 
 class ArticlesApiController extends Controller
@@ -27,7 +28,10 @@ class ArticlesApiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /**
+         * @param CreateArticleRequest $request
+         */
+        return response()->json(['data' => Article::create($request->all())]);
     }
 
     /**
